@@ -5,9 +5,10 @@ var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHei
 var renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(window.innerWidth*.60, window.innerHeight*.60);
 
-document.body.appendChild(renderer.domElement);
+dom = document.getElementById("MainContainer");
+dom.appendChild(renderer.domElement);
 
 var sphereGeometry = new THREE.DodecahedronGeometry(0.2, 1);
 var sphereMaterial = new THREE.MeshStandardMaterial({ color: 0xe5f2f2, shading: THREE.FlatShading })
@@ -16,7 +17,7 @@ heroSphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 heroSphere.receiveShadow = true;
 heroSphere.castShadow = true;
 scene.add(heroSphere);
-heroSphere.position.y = 1.8;
+heroSphere.position.y = 0.08;
 heroSphere.position.z = 4.8;
 currentLane = 0;
 heroSphere.position.x = currentLane;
@@ -33,3 +34,4 @@ var animate = function () {
 };
 
 animate();
+
